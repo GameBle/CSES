@@ -6,22 +6,24 @@ using namespace std;
 
 
 void solve(){
-    ll n;cin>>n;
-    vector<pair<ll,ll>> vp;
-    for(int i=0;i<n;i++){
-        int start,end;
-        cin>>start>>end;
-        vp.push_back({start,end});
-    }
-    sort(vp.begin(),vp.end());
-    ll last = INT_MIN,ans = 0;
-    for(int i=0;i<n;i++){
-        if(vp[i].first >= last){
-            ans++;
-            last = vp[i].second;
-        }
-    }
-    cout<<ans;
+ ll n;cin>>n;
+ vector<pair<ll,ll>> vp;
+ for(int i=0;i<n;i++){
+     ll start,end;
+     cin>>start>>end;
+     vp.push_back({end,start});
+ }
+ sort(vp.begin(),vp.end());
+ ll curr = -1;
+ ll count = 0;
+ for(int i=0;i<n;i++){
+     //cout<<curr<<" "<<vp[i].second<<endl;
+     if(vp[i].second >= curr){
+         curr = vp[i].first;
+         count++;
+     }
+ }
+    cout<<count<<endl;
 }
 
 
