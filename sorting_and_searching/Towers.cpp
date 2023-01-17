@@ -2,34 +2,30 @@
 #define ll long long
 #define vll vector<ll>
 using namespace std;
-
+//priority_queue <int, vector<int>, greater<int>>
 
 
 void solve(){
-    priority_queue<int> pq;
-    ll n;cin>>n;
-    vll v(n);
-    ll count = 0;
-    for(int i=0;i<n;i++){
-        cin>>v[i];
-        if(i == 0){
-            count++;
+    ll n;
+    cin >> n;
+    vector<ll> vc;
+    for(ll i=0;i<n;i++){
+        ll x;
+        cin >> x;
+        auto addr = lower_bound(vc.begin(),vc.end(),x+1);
+        if(addr == vc.end()){
+            vc.push_back(x);
         }else{
-            if(v[i] < pq.top()){
-                count+=0;
-            }else{
-                count+=1;
-            }
+            vc[addr-vc.begin()] = x;
         }
-        pq.push(v[i]);
     }
-    cout<<count;
+    cout << vc.size();
 }
 
 
 int main() {
     int t = 1;
-    //cin >> t;
+    // cin >> t;
     do { solve(); } while (--t);
 	return 0;
 }
