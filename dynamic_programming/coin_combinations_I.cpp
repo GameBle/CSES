@@ -19,10 +19,6 @@ void solve(){
             dp[i] = (dp[i] + dp[i-v[j]])%mod;
         }
     }
-    if(dp[x] == 0){
-        cout<<-1;
-        return;
-    }
     cout<<dp[x];
 }
 
